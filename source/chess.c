@@ -47,9 +47,10 @@ int main(void) {
 		}
 		
 		// LOGIC
-		if(current_player == PLAYER_BLACK && PLAYER_BLACK_CPU
-		|| current_player == PLAYER_WHITE && PLAYER_WHITE_CPU) {	// cpu actions
-			if(perform_move(&current_board, minmax_driver(&current_board, 0, current_player == PLAYER_BLACK))) {
+		if(!game_finished &&
+		  (current_player == PLAYER_BLACK && PLAYER_BLACK_CPU
+		|| current_player == PLAYER_WHITE && PLAYER_WHITE_CPU)) {	// cpu actions
+			if(perform_move(&current_board, minmax_driver(&current_board, 4, current_player == PLAYER_BLACK))) {
 				if(current_player == PLAYER_WHITE)
 					current_player = PLAYER_BLACK;
 				else
