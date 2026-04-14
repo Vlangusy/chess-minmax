@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "chessboard.h"
+#include "minmax.h"
 #include "drawing.h"
 #include "input.h"
 
@@ -10,6 +11,8 @@
 
 #define PLAYER_BLACK 'B'
 #define PLAYER_WHITE 'W'
+#define PLAYER_BLACK_CPU 1
+#define PLAYER_WHITE_CPU 0
 
 int main(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "chess");
@@ -44,6 +47,18 @@ int main(void) {
 		}
 		
 		// LOGIC
+		if(current_player == PLAYER_BLACK && PLAYER_BLACK_CPU
+		|| current_player == PLAYER_WHITE && PLAYER_WHITE_CPU) {	// cpu actions
+			if(perform_move(&current_board, minmax_driver(&current_board, 0, current_player == PLAYER_BLACK))) {
+				if(current_player == PLAYER_WHITE)
+					current_player = PLAYER_BLACK;
+				else
+					current_player = PLAYER_WHITE;
+			}
+			else
+				game_finished = 1;
+		}
+
 		if(from_square.x != NULL_SQUARE.x) {		// check if the current player's piece has been clicked
 			if(current_player == PLAYER_WHITE && current_board.whites[from_square.x][from_square.y] == EMPTY)
 				from_square = NULL_SQUARE;

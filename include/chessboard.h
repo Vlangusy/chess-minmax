@@ -6,8 +6,8 @@
 #define KNIGHT 'k'
 #define ROOK 'R'
 #define BISHOP 'B'
-#define KING 'K'
 #define QUEEN 'Q'
+#define KING 'K'
 
 #define NULL_SQUARE (Square){-1, -1}
 
