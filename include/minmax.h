@@ -5,5 +5,6 @@
 
 int evaluate_board_for_black(Chessboard *board);
 Move minmax_driver(Chessboard *board, int depth, int is_black_player);
+Move minmax_multithreaded_driver(Chessboard *board, int depth, int is_black_player);
 
 #endif
