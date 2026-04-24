@@ -42,7 +42,7 @@ int square_has_enemy(Chessboard *board, Square square, int is_black_player);
 int square_has_my_piece(Chessboard *board, Square square, int is_black_player);
 int square_has_any_piece(Chessboard *board, Square square);
 
-// functions for creating a stack (fifo) of moves
+// functions for creating a stack (lifo) of moves
 void free_moves(MoveNode *node);
 void push_move(MoveNode **node, Move move);
 void push_valid_moves_raycast(MoveNode **node, Chessboard *board, Square square, int direction_x, int direction_y);
